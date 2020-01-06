@@ -1,3 +1,0 @@
-# Hei, Lisa
-# Hei, Elinor :)
-# :) :)
