@@ -1,4 +1,9 @@
 # BioSim_G13_Elinor_Lisa
+<<<<<<< HEAD
+
+
+Team repository solving errors 
+=======
 Hello hello 
 
 
@@ -15,3 +20,4 @@ Hello hello
 
 
 
+>>>>>>> 01
