@@ -1,27 +1,7 @@
-# BioSim_G13_Elinor_Lisa
-<<<<<<< HEAD
-<<<<<<< HEAD
-ELINOR
-=======
-lisalisalisa
->>>>>>> 01
+# Modelling the Ecosysten of Rossumøya 
+### Lisa Hoff Strøm and Elinor Brede Skårås
+#### January 2020
 
-Team repository solving errors 
-=======
-Hello hello 
+In this project we develop a population dynamics simulation of the small 
+island Rossumøya.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 01
