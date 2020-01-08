@@ -12,32 +12,79 @@ class Create_landscape(object):
     def __init__(self, geostring):
         self.geostring = geostring
         self.landscape_matrix = []
-        self.fodder_matrix = []
-        self.column = len(geostring.split)
-        self.row = len(geostring.split[0])
         self.f_max_jungle = 800
         self.f_max_savanne = 300
         self.alpha_savanne = 0.3
+        self.geostring_split = geostring.split()
 
     def create_landscape_matrix(self, geostring):
-        pass
+        geostring_split = geostring.split()
+
+        column = len(geostring_split[0])
+        row = len(geostring_split)
+
+        geostring_list = []
+
+        for row_geostring in range(0, row):
+            for element in geostring_split[row_geostring]:
+                geostring_list.append(element)
+
+        landscape_matrix = [[0 for i in range(column)] for j in range(row)]
+
+        n = 0
+        for i in range(row):
+            for j in range(column):
+                value = geostring_list[n]
+                landscape_matrix[i][j] = value
+                n += 1
+        return landscape_matrix
 
     # Husk å teste at den er omgitt av hav
 
     def create_fodder_matrix(self, landscape_matrix):
+        geostring_split = geostring.split()
+
+        column = len(geostring_split[0])
+        row = len(geostring_split)
+        fodder_matrix = [[0 for i in range(column)] for j in range(row)]
+
+        for i in range(row):
             for j in range(column):
-                for i in range(row):
-                    if geography_matrix[column][row] == 'O':
-                        fodder_matrix[column][row] = None
+                if landscape_matrix[i][j] == 'O':
+                    fodder_matrix[i][j] = None
+                if landscape_matrix[i][j] == 'J':
+                    fodder_matrix[i][j] = self.f_max_jungle
 
-                    if geography_matrix[column][row] == 'J':
-                        fodder_matrix[column][row] = f.max_jungle
+                if landscape_matrix[i][j] == 'D':
+                    fodder_matrix[i][j] = None
+                if landscape_matrix[i][j] == 'S':
+                    fodder_matrix[i][j] = self.f_max_savanne
 
-                    if geography_matrix[column][row] == 'D':
-                        fodder_matrix[column][row] = None
+                if landscape_matrix[i][j] == 'M':
+                    fodder_matrix[i][j] = None
+        return fodder_matrix
 
-                    if geography_matrix[column][row] == 'S':
-                        fodder_matrix[column][row] = f_max_savanne
 
-                    if geography_matrix[column][row] == 'M':
-                        fodder_matrix[column][row] = None
+if __name__ == "__main__":
+    geogr = """\
+               OOOOOOOOOOOOOOOOOOOOO
+               OOOOOOOOSMMMMJJJJJJJO
+               OSSSSSJJJJMMJJJJJJJOO
+               OSSSSSSSSSMMJJJJJJOOO
+               OSSSSSJJJJJJJJJJJJOOO
+               OSSSSSJJJDDJJJSJJJOOO
+               OSSJJJJJDDDJJJSSSSOOO
+               OOSSSSJJJDDJJJSOOOOOO
+               OSSSJJJJJDDJJJJJJJOOO
+               OSSSSJJJJDDJJJJOOOOOO
+               OOSSSSJJJJJJJJOOOOOOO
+               OOOSSSSJJJJJJJOOOOOOO
+               OOOOOOOOOOOOOOOOOOOOO"""
+    import textwrap
+
+    geostring = textwrap.dedent(geogr)
+
+    geo = Create_landscape(geostring)
+
+    landscape = geo.create_landscape_matrix(geostring)
+    fodder = geo.create_fodder_matrix(landscape)
