@@ -3,6 +3,73 @@
 __author__ = "Elinor Skårås og Lisa Hoff"
 __email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 
+import animals
+
+
+class Ecology:
+    def __init__(self, herbivores, carnivores, age, weight, loc):  #help input
+        self.num_herbivores = len(herbivores)
+        self.num_carnivores = len(carnivores)
+        self.fodder_available = 0
+        self.herbivores = herbivores
+        self.carnivores = carnivores
+
+    def fodder_available(self):
+        herbivores_sorted = sorted(self.herbivores, key=lambda x: x.fitness,
+                                   reverse=True)
+        for herbivore in herbivores_sorted:
+            self.fodder_available -= animals.Animals.feeding_herbivores(
+                self.fodder_available)
+
+    def carnivores_prey(self):
+        herbivores_sorted = sorted(self.herbivores, key=lambda x: x.fitness,
+                                   reverse=False)
+        carnivores_sorted = sorted(self.carnivores, key=lambda x: x.fitness,
+                                   reverse=True)
+
+        failed_prey = herbivores_sorted
+
+        for carnivore in carnivores_sorted:
+            killed = animals.Animals.carnivores_prey(failed_prey)
+            if len(killed) > 0:
+                for killed_prey in killed:
+                    failed_prey.remove(killed_prey)
+
+            self.herbivores = failed_prey
+
+    def procreation_herbivores(self):
+        offsprings_herbivores = []
+
+        for herbivore in self.herbivores:
+            num_herbivores = len(self.herbivores)
+            offspring = animals.Animals.birth(num_herbivores)
+            if offspring is not False:
+                offsprings_herbivores.append(offspring)
+
+        self.herbivores.extend(offsprings_herbivores)
+
+    def procreation_carnivores(self):
+        offsprings_carnivores = []
+
+        for carnivore in self.carnivores:
+            num_carnivores = len(self.carnivores)
+            offspring = animals.Animals.birth(num_carnivores)
+            if offspring is not False:
+                offsprings_carnivores.append(offspring)
+        self.herbivores.extend(offsprings_carnivores)
+
+    def migration(self):
+        pass
+
+    def aging(self):
+        pass
+
+    def loss_of_weight(self):
+        pass
+
+    def death(self):
+        pass
+
 
 class Ocean(Ecology):
     ocean_params = {'f_max': 0,
