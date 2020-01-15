@@ -70,7 +70,7 @@ class Animals():
                                self.phi_weight * (self.weight - self.w_half))))
         return self.fitness
 
-    def migration(self):
+    def will_migrate(self):
         probability = self.mu * self.fitness
         if random.uniform(0, 1) < probability:
             return True

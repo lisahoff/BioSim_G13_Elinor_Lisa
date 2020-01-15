@@ -3,7 +3,7 @@
 __author__ = "Elinor Skårås og Lisa Hoff"
 __email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 
-import animals
+from src.biosim.animals import Animals as Ani
 
 
 class Ecology:
@@ -18,7 +18,7 @@ class Ecology:
         herbivores_sorted = sorted(self.herbivores, key=lambda x: x.fitness,
                                    reverse=True)
         for herbivore in herbivores_sorted:
-            self.fodder_available -= animals.Animals.feeding_herbivores(
+            self.fodder_available -= Ani.feeding_herbivores(
                 self.fodder_available)
 
     def carnivores_prey(self):
@@ -30,7 +30,7 @@ class Ecology:
         failed_prey = herbivores_sorted
 
         for carnivore in carnivores_sorted:
-            killed = animals.Animals.carnivores_prey(failed_prey)
+            killed = Ani.carnivores_prey(failed_prey)
             if len(killed) > 0:
                 for killed_prey in killed:
                     failed_prey.remove(killed_prey)
@@ -42,7 +42,7 @@ class Ecology:
 
         for herbivore in self.herbivores:
             num_herbivores = len(self.herbivores)
-            offspring = animals.Animals.birth(num_herbivores)
+            offspring = Ani.birth(num_herbivores)
             if offspring is not False:
                 offsprings_herbivores.append(offspring)
 
@@ -53,7 +53,7 @@ class Ecology:
 
         for carnivore in self.carnivores:
             num_carnivores = len(self.carnivores)
-            offspring = animals.Animals.birth(num_carnivores)
+            offspring = Ani.birth(num_carnivores)
             if offspring is not False:
                 offsprings_carnivores.append(offspring)
         self.herbivores.extend(offsprings_carnivores)
@@ -139,7 +139,7 @@ class Savannah(Ecology):
                 raise KeyError(param, ': must be a savannah parameter.')
             if value < 0:
                 raise ValueError(value, ': must be positive.')
-            if param == 'possible_to_enter' and not (False or True):
+            if param == 'possible_to_enter' and value is not (False or True):
                 raise TypeError(value, ': must be True or False')
             else:
                 cls.savannah_params[param] = value
@@ -161,7 +161,7 @@ class Desert(Ecology):
                 raise KeyError(param, ': must be a desert parameter.')
             if value < 0:
                 raise ValueError(value, ': must be positive.')
-            if param == 'possible_to_enter' and not (False or True):
+            if param == 'possible_to_enter' and value is not (False or True):
                 raise TypeError(value, ': must be True or False')
             else:
                 cls.desert_params[param] = value
@@ -183,7 +183,7 @@ class Mountain(Ecology):
                 raise KeyError(param, ': must be a mountain parameter.')
             if value < 0:
                 raise ValueError(value, ': must be positive.')
-            if param == 'possible_to_enter' and not (False or True):
+            if param == 'possible_to_enter' and value is not (False or True):
                 raise TypeError(value, ': must be True or False')
             else:
                 cls.mountain_params[param] = value

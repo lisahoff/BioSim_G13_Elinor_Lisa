@@ -69,7 +69,7 @@ class TestAnimals(unittest.TestCase):  #
         self.fitness = Ani.calculate_fitness(self)
         self.assertAlmostEqual(float(self.fitness), 0.4991, 3)
 
-    def test_migration(self):
+    def test_will_migrate(self):
         pass
 
     def test_birth(self):
