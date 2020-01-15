@@ -7,6 +7,9 @@ __email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 
 class Landscape():
     def __init__ (self, geostring):
+        pass
+
+    def create_landscape(self, geostring):
         self.geostring = geostring
         self.landscape = []
         self.geostring_split = geostring.split()
@@ -14,7 +17,6 @@ class Landscape():
         self.row = len(geostring.split())
         self.geostring_list = []
 
-    def create_landscape(self, geostring):
         for row_geostring in range(0, self.row):
             for element in self.geostring_split[row_geostring]:
                 self.geostring_list.append(element)
@@ -26,22 +28,22 @@ class Landscape():
                 coord = (i, j)
                 self.landscape.append({"loc": coord, "lan": geostring_str[n]})
                 n += 1
-        return self.landscape, self.geostring_list
 
-    def ocean_around_island(self, geostring_list):
         for north_coord in self.geostring_list[:self.column]:
             if north_coord != 'O':
                 raise ValueError('the island is not surrounded by ocean')
         for south_coord in self.geostring_list[self.column * (self.row - 1):]:
             if south_coord != 'O':
                 raise ValueError('the island is not surrounded by ocean')
-        for west_coord in geostring_list[0::self.column]:
+        for west_coord in self.geostring_list[0::self.column]:
             if west_coord != 'O':
                 raise ValueError('the island is not surrounded by ocean')
-        for east_coord in geostring_list[(self.column - 1)::self.column]:
+        for east_coord in self.geostring_list[(self.column - 1)::self.column]:
             if east_coord != 'O':
                 raise ValueError('the island is not surrounded by ocean')
-        return True
+
+        return self.landscape, self.geostring_list
+
 
 
 if __name__ == "__main__":
@@ -64,15 +66,11 @@ if __name__ == "__main__":
 
     geostring = textwrap.dedent(geogr)
 
-    lan = Landscape(geogr)
-    landscape, geostring_list = lan.create_landscape(geostring)
+    Landscape = Landscape(geostring)
+    landscape, geostring_list = Landscape.create_landscape(geostring)
     print(landscape)
 
-    print('----')
-    print(geostring_list)
 
-    test = lan.ocean_around_island(geostring_list)
-    if test is True:
-        print('yey')
+    print(geostring_list)
 
 

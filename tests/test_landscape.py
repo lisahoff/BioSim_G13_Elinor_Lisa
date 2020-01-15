@@ -14,16 +14,41 @@ class TestLandscape(unittest.TestCase):
         pass
 
     def test_ocean_around_island(self):
-        geostring = """\
+        geostring1 = """\
                         OOOO
                         MMJO
                         OJMO
                         OOOO"""
-        geostring = textwrap.dedent(geostring)
+        geostring2 = """\
+                        OOOM
+                        OMJO
+                        OJMO
+                        OOOO"""
+        geostring3 = """\
+                        OOMO
+                        OMJO
+                        OJMO
+                        OOOO"""
+        geostring4 = """\
+                        OOOO
+                        OMJO
+                        OJMO
+                        OMOO"""
 
-        lan = Lan(geostring)
-        landscape, geostring_list = lan.create_landscape(self.geostring)
+        geostring5 = """\
+                        OOOO
+                        OMJO
+                        OJMO
+                        OMMO"""
+
+
         with pytest.raises(ValueError):
-            lan.ocean_around_island(geostring_list)
+            landscape, geostring_list = Lan.create_landscape(self, geostring1)
+            landscape, geostring_list = Lan.create_landscape(self, geostring2)
+            landscape, geostring_list = Lan.create_landscape(self, geostring3)
+            landscape, geostring_list = Lan.create_landscape(self, geostring4)
+            landscape, geostring_list = Lan.create_landscape(self, geostring5)
+
+
 
 
