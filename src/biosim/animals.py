@@ -8,7 +8,22 @@ import math
 
 
 class Animals():
+    '''
+    Class for all animals on island
+    '''
     def __init___(self, age=0, weight=None, loc=None):
+        ''' creates animal with age 0
+
+        Parameters
+        ----------
+        age: int - starting age for animal
+        weight: float - starting weight for animal
+        loc: type of location
+
+        Returns
+        -------
+
+        '''
         self.age = age
         if weight:
             self.weight = weight
@@ -18,10 +33,27 @@ class Animals():
         self.fitness = 0
 
     def aging(self):
+        '''
+
+        Returns the amount of years the animal ages
+        -------
+
+        '''
         self.age += 1
         # self.calculate_fitness()
 
     def feeding_herbivores(self, fodder_available):
+        '''
+
+        Parameters
+        ----------
+        fodder_available is the fodder available in the cell before the
+        herbivore starts to eat.
+
+        Returns the amount of fodder eaten by the herbivore.
+        -------
+
+        '''
         if fodder_available > self.F:
             fodder_eaten = self.F
             fodder_available -= self.F
@@ -30,6 +62,17 @@ class Animals():
         return fodder_eaten
 
     def feeding_carnivores(self, failed_prey):
+        '''
+
+        Parameters
+        ----------
+        failed_prey are the number of herbivores that survives the attack
+        from carnivores when the carnivore faills to kill
+
+        Returns the list of herbivores eaten
+        -------
+
+        '''
         killed = []
         killed_herbivores = 0
 
@@ -54,14 +97,37 @@ class Animals():
         return killed
 
     def weight_increase(self, fodder_eaten):
+        '''
+
+        Parameters
+        ----------
+        fodder_eaten is the fodder which is eaten by the animal
+
+        Returns the weight gain of the animal due to eating x amount of fodder
+        -------
+
+        '''
         self.weight += fodder_eaten * self.beta
         # self.calculate_fitness()
 
     def weight_decrease(self):
+        '''
+
+        Returns the annual weight loss off animal.
+        -------
+
+        '''
         self.weight -= self.weight * self.eta
         # self.calculate_fitness()
 
     def calculate_fitness(self):
+        '''
+
+        Returns the calculated fitness level of animal which is based
+        on age and weight.
+        -------
+
+        '''
         if self.weight <= self.w_birth:
             self.fitness = 0
         else:
@@ -71,7 +137,18 @@ class Animals():
                                self.phi_weight * (self.weight - self.w_half))))
         return self.fitness
 
+<<<<<<< Updated upstream
     def will_migrate(self):
+=======
+    def migration(self):
+        '''
+
+        Returns boolean if the animal migrate, depending on their
+        own fitness and the availability of fodder in neighboring cells
+        -------
+
+        '''
+>>>>>>> Stashed changes
         probability = self.mu * self.fitness
         if random.uniform(0, 1) < probability:
             return True
@@ -79,6 +156,19 @@ class Animals():
             return False
 
     def birth(self, num_animals):
+        '''
+
+        Parameters
+        ----------
+        num_animals: is the number of animals in the given cell
+
+        Returns offspring if the animal gives birth during a year and updates
+        the mother animals weight depending on the birth weight. If no birth
+        is given the mother weight stays the same.
+
+        -------
+
+        '''
         if self.weight < self.zeta * (self.w_birth + self.sigma_birth):
             probability = 0
         else:
@@ -94,6 +184,12 @@ class Animals():
             return False
 
     def death(self):
+        '''
+
+        Returns the probability of an animal dying during a year
+        -------
+
+        '''
         probability = self.omega * (1 - self.fitness)
         if random.uniform(0, 1) < probability:
             return True
@@ -102,6 +198,10 @@ class Animals():
 
 
 class Herbivores(Animals):
+        '''
+        Class parameters represented in a dictionary.
+        '''
+
     herbivore_params = {'w_birth': 8,
                         'sigma_birth': 1.5,
                         'beta': 0.9,
@@ -120,10 +220,21 @@ class Herbivores(Animals):
                         'DeltaPhiMax': None}
 
     def __init__(self, age=0, weight=None, loc=None):
-        super().__init__(age, weight, loc)  #
+        super().__init__(age, weight, loc) #
+
 
     @classmethod
     def set_parameters(cls, new_params):
+        '''
+
+        Parameters
+        ----------
+        new_params
+
+        Returns
+        -------
+
+        '''
         for param, value in new_params.items():
             if param not in cls.herbivore_params:
                 raise KeyError(param, ': must be a herbivore parameter.')
@@ -138,7 +249,10 @@ class Herbivores(Animals):
 
 
 class Carnivores(Animals):
+        '''
+        Class parameters represented in a dictionary.
 
+        '''
     carnivore_params = {'w_birth': 6,
                         'sigma_birth': 1,
                         'beta': 0.75,
@@ -161,6 +275,16 @@ class Carnivores(Animals):
 
     @classmethod
     def set_parameters(cls, new_params):
+        '''
+
+        Parameters
+        ----------
+        new_params
+
+        Returns
+        -------
+
+        '''
         for param, value in new_params.items():
             if param not in cls.carnivore_params:
                 raise KeyError(param, ': must be a carnivore parameter.')
