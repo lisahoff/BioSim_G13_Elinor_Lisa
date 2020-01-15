@@ -8,7 +8,7 @@ import math
 
 
 class Animals():
-    def __init___(self, age=0, weight=0, loc=None):
+    def __init___(self, age=0, weight=None, loc=None):
         self.age = age
         if weight:
             self.weight = weight
@@ -19,9 +19,9 @@ class Animals():
 
     def aging(self):
         self.age += 1
-        self.calculate_fitness()
+        # self.calculate_fitness()
 
-    def feeding_herbivors(self, fodder_available):
+    def feeding_herbivores(self, fodder_available):
         if fodder_available > self.F:
             fodder_eaten = self.F
             fodder_available -= self.F
@@ -54,16 +54,16 @@ class Animals():
 
     def weight_increase(self, fodder_eaten):
         self.weight += fodder_eaten * self.beta
-        self.calculate_fitness()
+        # self.calculate_fitness()
 
     def weight_decrease(self):
         self.weight -= self.weight * self.eta
-        self.calculate_fitness()
+        # self.calculate_fitness()
 
     def calculate_fitness(self):
         if self.weight <= self.w_birth:
             self.fitness = 0
-        if self.weight > self.w_birth:
+        else:
             self.fitness = (1 / (1 + math.exp(
                 self.phi_age * (self.age - self.a_half)))) * \
                            (1 / (1 + math.exp(
