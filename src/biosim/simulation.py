@@ -8,6 +8,7 @@ __email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 
 import random
 
+
 class BioSim:
     def __init__(
         self,
@@ -72,7 +73,8 @@ class BioSim:
                 coord = (i, j)
                 self.landscape.append({"loc": coord, "lan": island_map_str[n]})
                 if island_map_str[n] not in self.landscape_types:
-                    raise ValueError(island_map_str[n], 'is not a landscape type.')
+                    raise ValueError(island_map_str[n], \
+                                     'is not a landscape type.')
                 n += 1
 
         for north_coord in self.island_map_list[:self.column]:
@@ -112,6 +114,8 @@ class BioSim:
                 # else:
                     # raise ValueError('The list of animals has wrong species')
         return self.herbivores, self.carnivores
+
+
 
     def set_animal_parameters(self, species, params):
         """
