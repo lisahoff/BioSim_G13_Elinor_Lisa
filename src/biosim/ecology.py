@@ -6,15 +6,40 @@ __email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 from src.biosim.animals import Animals as Ani
 
 
+
 class Ecology:
+<<<<<<< Updated upstream
     def __init__(self, herbivores, carnivores, age, weight, loc):  # help input
+=======
+    '''
+
+    '''
+    def __init__(self, herbivores, carnivores, age, weight, loc):  #help input
+        '''
+
+        Parameters
+        ----------
+        herbivores
+        carnivores
+        age
+        weight
+        loc
+        '''
+>>>>>>> Stashed changes
         self.num_herbivores = len(herbivores)
         self.num_carnivores = len(carnivores)
         self.fodder_available = 0
         self.herbivores = herbivores
         self.carnivores = carnivores
 
+
     def fodder_available(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         herbivores_sorted = sorted(self.herbivores, key=lambda x: x.fitness,
                                    reverse=True)
         for herbivore in herbivores_sorted:
@@ -22,6 +47,12 @@ class Ecology:
                 self.fodder_available)
 
     def carnivores_prey(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         herbivores_sorted = sorted(self.herbivores, key=lambda x: x.fitness,
                                    reverse=False)
         carnivores_sorted = sorted(self.carnivores, key=lambda x: x.fitness,
@@ -38,6 +69,12 @@ class Ecology:
             self.herbivores = failed_prey
 
     def procreation_herbivores(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         offsprings_herbivores = []
 
         for herbivore in self.herbivores:
@@ -49,6 +86,12 @@ class Ecology:
         self.herbivores.extend(offsprings_herbivores)
 
     def procreation_carnivores(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         offsprings_carnivores = []
 
         for carnivore in self.carnivores:
@@ -59,19 +102,46 @@ class Ecology:
         self.herbivores.extend(offsprings_carnivores)
 
     def migration(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         pass
 
     def aging(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         pass
 
     def loss_of_weight(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         pass
 
     def death(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         pass
 
 
 class Ocean(Ecology):
+    '''
+
+    '''
     ocean_params = {'f_max': 0,
                     'possible_to_enter': False}
 
@@ -94,6 +164,9 @@ class Ocean(Ecology):
 
 
 class Jungle(Ecology):
+    '''
+
+    '''
     jungle_params = {'f_max': 800,
                      'possible_to_enter': True}
 
@@ -103,6 +176,12 @@ class Jungle(Ecology):
         self.fodder = self.jungle_params['f_max']
 
     def grow_fodder(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         self.fodder = self.jungle_params['f_max']
 
     @classmethod
@@ -119,6 +198,9 @@ class Jungle(Ecology):
 
 
 class Savannah(Ecology):
+    '''
+
+    '''
     savannah_params = {'f_max': 300,
                        'alpha': 0.3,
                        'possible_to_enter': True}
@@ -129,6 +211,12 @@ class Savannah(Ecology):
         self.fodder = self.savannah_params['f_max']
 
     def grow_fodder(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         self.fodder = self.fodder + self.savannah_params['alpha'] * (
                     self.savannah_params['f_max'] - self.fodder)
 
@@ -146,6 +234,9 @@ class Savannah(Ecology):
 
 
 class Desert(Ecology):
+    '''
+
+    '''
     desert_params = {'f_max': 0,
                      'possible_to_enter': False}  # Kun carnivores
 
@@ -168,6 +259,9 @@ class Desert(Ecology):
 
 
 class Mountain(Ecology):
+    '''
+
+    '''
     mountain_params = {'f_max': 0,
                        'possible_to_enter': False}
 
