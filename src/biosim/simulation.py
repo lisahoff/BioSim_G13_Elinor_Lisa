@@ -3,8 +3,8 @@
 """
 """
 
-__author__ = "Elinor skårås og Lisa Hoff Strøm"
-__email__ = "elinor9511@gmail.com, lisast@nmbu.no"
+__author__ = "Elinor Skårås og Lisa Hoff Strøm"
+__email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 
 
 class BioSim:

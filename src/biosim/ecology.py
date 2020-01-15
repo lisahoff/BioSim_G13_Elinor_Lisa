@@ -7,7 +7,7 @@ from src.biosim.animals import Animals as Ani
 
 
 class Ecology:
-    def __init__(self, herbivores, carnivores, age, weight, loc):  #help input
+    def __init__(self, herbivores, carnivores, age, weight, loc):  # help input
         self.num_herbivores = len(herbivores)
         self.num_carnivores = len(carnivores)
         self.fodder_available = 0
