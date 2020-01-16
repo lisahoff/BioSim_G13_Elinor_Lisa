@@ -5,7 +5,7 @@ __email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 
 
 
-class Landscape():
+class Landscape()
     def __init__ (self, geostring, poplist):
         self.geostring = geostring
         self.landscape = []
