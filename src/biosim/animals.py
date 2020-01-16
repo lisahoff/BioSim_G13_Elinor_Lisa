@@ -8,6 +8,9 @@ import math
 
 
 class Animals():
+    '''
+       Class for all animals on island
+    '''
     def __init___(self, age=0, weight=None, loc=None):
         self.age = age
         if weight:
