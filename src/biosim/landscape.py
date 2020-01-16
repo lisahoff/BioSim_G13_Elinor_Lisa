@@ -20,6 +20,13 @@ class Landscape():
         self.carnivores = []
 
     def create_landscape(self):
+        '''
+        This function creates the landscape of the island.
+
+        Returns a dictionary where keys are coordinates and blablabla
+        -------
+
+        '''
         for row_geostring in range(0, self.row):
             for element in self.geostring_split[row_geostring]:
                 self.geostring_list.append(element)

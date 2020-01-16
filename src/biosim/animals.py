@@ -103,7 +103,8 @@ class Animals():
         ----------
         fodder_eaten is the fodder which is eaten by the animal
 
-        Returns the weight gain of the animal due to eating x amount of fodder
+        Increases the animal weight due to x amount of fodder eaten * the
+        parameter 'beta'
         -------
 
         '''
@@ -113,7 +114,7 @@ class Animals():
     def weight_decrease(self):
         '''
 
-        Returns the annual weight loss off animal.
+        Decreases the animal weight annually based on the parameter 'eta'
         -------
 
         '''
@@ -121,10 +122,10 @@ class Animals():
         # self.calculate_fitness()
 
     def calculate_fitness(self):
-        '''
+        ''' The calculated fitness level of animal which is based
+        on age and weight of the animal.
 
-        Returns the calculated fitness level of animal which is based
-        on age and weight.
+        Returns a float of the calculated fitness level.
         -------
 
         '''
