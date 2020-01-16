@@ -4,8 +4,13 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
+<<<<<<< HEAD
 SOURCEDIR     = source
 BUILDDIR      = build
+=======
+SOURCEDIR     = .
+BUILDDIR      = Biosim_G13_Elinor_Lisabuild
+>>>>>>> 01
 
 # Put it first so that "make" without argument is like "make help".
 help:

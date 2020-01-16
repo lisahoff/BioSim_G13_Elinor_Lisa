@@ -7,8 +7,13 @@ REM Command file for Sphinx documentation
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
+<<<<<<< HEAD
 set SOURCEDIR=source
 set BUILDDIR=build
+=======
+set SOURCEDIR=.
+set BUILDDIR=Biosim_G13_Elinor_Lisabuild
+>>>>>>> 01
 
 if "%1" == "" goto help
 
