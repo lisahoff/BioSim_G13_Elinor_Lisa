@@ -8,6 +8,7 @@ __email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 
 import random
 
+from src.biosim.animals import Ecology as Eco
 
 class BioSim:
     def __init__(
@@ -107,15 +108,34 @@ class BioSim:
                     self.herbivores.append(
                         {'age': self.age, 'weight': self.weight,
                          'loc': self.loc})
-                if self.species == 'Carnivore':
+                elif self.species == 'Carnivore':
                     self.carnivores.append(
                         {'age': self.age, 'weight': self.weight,
                          'loc': self.loc})
-                # else:
-                    # raise ValueError('The list of animals has wrong species')
+                else:
+                    raise ValueError('The list of animals has wrong species')
         return self.herbivores, self.carnivores
 
+    def simulate_one_year(self):
+        for d in self.m:
+            for key in d:
+                d[key].Eco.fodder_available()
+                d[key].Eco.carnivores_prey()
+                d[key].Eco.birth()
 
+
+
+    def simulate(self, num_years, vis_years=1, img_years=None):
+        """
+        Run simulation while visualizing the result.
+
+        :param num_years: number of years to simulate
+        :param vis_years: years between visualization updates
+        :param img_years: years between visualizations saved to files (default: vis_years)
+
+        Image files will be numbered consecutively.
+        """
+        pass
 
     def set_animal_parameters(self, species, params):
         """
@@ -135,17 +155,7 @@ class BioSim:
         """
         pass
 
-    def simulate(self, num_years, vis_years=1, img_years=None):
-        """
-        Run simulation while visualizing the result.
 
-        :param num_years: number of years to simulate
-        :param vis_years: years between visualization updates
-        :param img_years: years between visualizations saved to files (default: vis_years)
-
-        Image files will be numbered consecutively.
-        """
-        pass
 
     def add_population(self, population):
         """
