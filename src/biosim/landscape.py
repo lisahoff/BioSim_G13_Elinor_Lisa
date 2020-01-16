@@ -6,6 +6,9 @@ __email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 
 
 class Landscape()
+    '''
+       Class for the landscape on the island
+    '''
     def __init__ (self, geostring, poplist):
         self.geostring = geostring
         self.landscape = []
@@ -20,6 +23,13 @@ class Landscape()
         self.carnivores = []
 
     def create_landscape(self):
+        '''
+        this function creates landscape where the animals live
+
+        Returns
+        -------
+
+        '''
         for row_geostring in range(0, self.row):
             for element in self.geostring_split[row_geostring]:
                 self.geostring_list.append(element)
