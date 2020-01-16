@@ -9,10 +9,10 @@ import math
 
 class Animals():
     '''
-       Class for all animals on island
+       The over all class for all animals on island. Herbivores and Carnivores
     '''
     def __init___(self, age=0, weight=None, loc=None):
-        ''' creates animal with age 0
+        '''
 
         Parameters
         ----------
@@ -67,7 +67,7 @@ class Animals():
         Parameters
         ----------
         failed_prey are the number of herbivores that survives the attack
-        from carnivores when the carnivore faills to kill
+        from carnivores when the carnivore fails to kill
 
         Returns the list of herbivores eaten
         -------
@@ -97,6 +97,12 @@ class Animals():
         return killed
 
     def weight_increase(self, fodder_eaten):
+        '''
+
+        Decreases the animal weight annually based on the parameter 'beta'
+        -------
+
+        '''
         self.weight += fodder_eaten * self.beta
         # self.calculate_fitness()
 
@@ -111,7 +117,8 @@ class Animals():
         # self.calculate_fitness()
 
     def calculate_fitness(self):
-        ''' The calculated fitness level of animal which is based
+        '''
+        The calculated fitness level of animal which is based
         on age and weight of the animal.
 
         Returns a float of the calculated fitness level.
