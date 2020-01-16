@@ -9,7 +9,7 @@ import math
 
 class Animals():
     '''
-       Class for all animals on island
+       The over all class for all animals on island. Herbivores and Carnivores
     '''
     def __init___(self, age=0, weight=None, loc=None):
         '''

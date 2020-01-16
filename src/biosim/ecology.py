@@ -35,7 +35,8 @@ class Ecology:
     def fodder_available(self):
         '''
 
-        Returns
+        Returns the amount of fodder available in the cell at the start of
+        the simulation
         -------
 
         '''
@@ -139,7 +140,7 @@ class Ecology:
 
 class Ocean(Ecology):
     '''
-    Class for the geography type Ocean
+    Sub class for the geography type Ocean
 
     Parameters
     ----------
@@ -170,7 +171,7 @@ class Ocean(Ecology):
 
 class Jungle(Ecology):
     '''
-       Class for the geography type Jungle
+       Sub class for the geography type Jungle
 
        Parameters
        ----------
@@ -204,7 +205,7 @@ class Jungle(Ecology):
 
 class Savannah(Ecology):
     '''
-    Class for the geography type Savannah
+    Sub class for the geography type Savannah
 
     Parameters
     ----------
@@ -241,7 +242,7 @@ class Savannah(Ecology):
 
 class Desert(Ecology):
     '''
-    Class for the geography type Desert
+    Sub Class for the geography type Desert
 
     Parameters
     ----------
