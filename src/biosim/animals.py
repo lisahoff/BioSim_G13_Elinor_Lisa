@@ -12,6 +12,18 @@ class Animals():
        Class for all animals on island
     '''
     def __init___(self, age=0, weight=None, loc=None):
+        ''' creates animal with age 0
+
+        Parameters
+        ----------
+        age: int - starting age for animal
+        weight: float - starting weight for animal
+        loc: type of location
+
+        Returns
+        -------
+
+        '''
         self.age = age
         if weight:
             self.weight = weight
@@ -21,10 +33,27 @@ class Animals():
         self.fitness = 0
 
     def aging(self):
+        '''
+
+        Returns the amount of years the animal ages
+        -------
+
+        '''
         self.age += 1
         # self.calculate_fitness()
 
     def feeding_herbivores(self, fodder_available):
+        '''
+
+        Parameters
+        ----------
+        fodder_available is the fodder available in the cell before the
+        herbivore starts to eat.
+
+        Returns the amount of fodder eaten by the herbivore.
+        -------
+
+        '''
         if fodder_available > self.F:
             fodder_eaten = self.F
             fodder_available -= self.F
@@ -33,6 +62,17 @@ class Animals():
         return fodder_eaten
 
     def feeding_carnivores(self, failed_prey):
+        '''
+
+        Parameters
+        ----------
+        failed_prey are the number of herbivores that survives the attack
+        from carnivores when the carnivore faills to kill
+
+        Returns the list of herbivores eaten
+        -------
+
+        '''
         killed = []
         killed_herbivores = 0
 
@@ -61,10 +101,23 @@ class Animals():
         # self.calculate_fitness()
 
     def weight_decrease(self):
+        '''
+
+        Decreases the animal weight annually based on the parameter 'eta'
+        -------
+
+        '''
         self.weight -= self.weight * self.eta
         # self.calculate_fitness()
 
     def calculate_fitness(self):
+        ''' The calculated fitness level of animal which is based
+        on age and weight of the animal.
+
+        Returns a float of the calculated fitness level.
+        -------
+
+        '''
         if self.weight <= self.w_birth:
             self.fitness = 0
         else:
@@ -75,6 +128,13 @@ class Animals():
         return self.fitness
 
     def will_migrate(self):
+        '''
+
+        Returns boolean if the animal migrate, depending on their
+        own fitness and the availability of fodder in neighboring cells
+        -------
+
+        '''
         probability = self.mu * self.fitness
         if random.uniform(0, 1) < probability:
             return True
@@ -82,6 +142,19 @@ class Animals():
             return False
 
     def birth(self, num_animals):
+        '''
+
+        Parameters
+        ----------
+        num_animals: is the number of animals in the given cell
+
+        Returns offspring if the animal gives birth during a year and updates
+        the mother animals weight depending on the birth weight. If no birth
+        is given the mother weight stays the same.
+
+        -------
+
+        '''
         if self.weight < self.zeta * (self.w_birth + self.sigma_birth):
             probability = 0
         else:
@@ -97,6 +170,12 @@ class Animals():
             return False
 
     def death(self):
+        '''
+
+        Returns the probability of an animal dying during a year
+        -------
+
+        '''
         probability = self.omega * (1 - self.fitness)
         if random.uniform(0, 1) < probability:
             return True
@@ -105,6 +184,9 @@ class Animals():
 
 
 class Herbivores(Animals):
+    '''
+    Class parameters represented in a dictionary.
+    '''
     herbivore_params = {'w_birth': 8,
                         'sigma_birth': 1.5,
                         'beta': 0.9,
@@ -141,6 +223,10 @@ class Herbivores(Animals):
 
 
 class Carnivores(Animals):
+    '''
+    Class parameters represented in a dictionary.
+
+    '''
 
     carnivore_params = {'w_birth': 6,
                         'sigma_birth': 1,
