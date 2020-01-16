@@ -69,7 +69,7 @@ class TestAnimals(unittest.TestCase):  #
         self.fitness = Ani.calculate_fitness(self)
         self.assertAlmostEqual(float(self.fitness), 0.4991, 3)
 
-    def test_migration(self):
+    def test_will_migrate(self):
         pass
 
     def test_birth(self):
@@ -79,7 +79,7 @@ class TestAnimals(unittest.TestCase):  #
         pass
 
 
-class TestHerbivore:
+class TestHerbivore(unittest.TestCase):
     def test_errors_new_parameters_herb(self):
         with pytest.raises(KeyError):
             Herb.set_parameters({'test': 2})
@@ -91,7 +91,7 @@ class TestHerbivore:
             Herb.set_parameters({'eta': 1.1})
 
 
-class TestCarnivore:
+class TestCarnivore(unittest.TestCase):
     def test_errors_new_parameters_carn(self):
         with pytest.raises(KeyError):
             Carn.set_parameters({'test': 2})

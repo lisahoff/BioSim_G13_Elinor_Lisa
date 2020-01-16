@@ -40,9 +40,10 @@ class Animals():
                 if carnivore_fitness <= herbivore_fitness:
                     probability = 0
                 elif (
-                        carnivore_fitness - herbivore_fitness) < self.DeltaPhiMax:
-                    probability = (
-                                              carnivore_fitness - herbivore_fitness) / self.DeltaPhiMax
+                        carnivore_fitness - herbivore_fitness) \
+                        < self.DeltaPhiMax:
+                    probability = (carnivore_fitness - herbivore_fitness) \
+                                  / self.DeltaPhiMax
                 else:
                     probability = 1
                 if random.uniform(0, 1) < probability:
@@ -70,7 +71,7 @@ class Animals():
                                self.phi_weight * (self.weight - self.w_half))))
         return self.fitness
 
-    def migration(self):
+    def will_migrate(self):
         probability = self.mu * self.fitness
         if random.uniform(0, 1) < probability:
             return True
@@ -155,8 +156,8 @@ class Carnivores(Animals):
                         'F': 50,
                         'DeltaPhiMax': 10}
 
-    def __init__(self, age=0, weight=None, loc = None):
-        super().__init__(age, weight, loc) #
+    def __init__(self, age=0, weight=None, loc=None):
+        super().__init__(age, weight, loc)  #
 
     @classmethod
     def set_parameters(cls, new_params):

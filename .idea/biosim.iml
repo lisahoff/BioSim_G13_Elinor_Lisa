@@ -6,6 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="ReSTService">
     <option name="workdir" value="$MODULE_DIR$/doc" />
     <option name="DOC_DIR" value="$MODULE_DIR$/doc" />
@@ -14,4 +15,6 @@
     <option name="PROJECT_TEST_RUNNER" value="pytest" />
 >>>>>>> 03_Geography
   </component>
+=======
+>>>>>>> 03_Geography
 </module>
