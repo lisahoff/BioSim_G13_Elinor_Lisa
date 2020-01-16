@@ -7,7 +7,12 @@ __author__ = "Elinor Skårås og Lisa Hoff Strøm"
 __email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 
 import random
-
+from src.biosim.ecology import Ecology as Eco
+from src.biosim.ecology import Ocean as Oce
+from src.biosim.ecology import Jungle as Jun
+from src.biosim.ecology import Savannah as Sav
+from src.biosim.ecology import Desert as Des
+from src.biosim.ecology import Mountain as Mon
 
 class BioSim:
     def __init__(
@@ -57,6 +62,8 @@ class BioSim:
 
         self.seed = random.seed()
 
+
+
     def create_landscape(self):
         for row_island_map in range(0, self.row):
             for element in self.island_map_split[row_island_map]:
@@ -71,7 +78,8 @@ class BioSim:
         for i in range(self.row):
             for j in range(self.column):
                 coord = (i, j)
-                self.landscape.append({"loc": coord, "lan": island_map_str[n]})
+                if island_map_str[n] == 'J':
+                    self.landscape.append({"loc": coord, "lan": Jungle})
                 if island_map_str[n] not in self.landscape_types:
                     raise ValueError(island_map_str[n], \
                                      'is not a landscape type.')
@@ -107,15 +115,34 @@ class BioSim:
                     self.herbivores.append(
                         {'age': self.age, 'weight': self.weight,
                          'loc': self.loc})
-                if self.species == 'Carnivore':
+                elif self.species == 'Carnivore':
                     self.carnivores.append(
                         {'age': self.age, 'weight': self.weight,
                          'loc': self.loc})
-                # else:
-                    # raise ValueError('The list of animals has wrong species')
+                else:
+                    raise ValueError('The list of animals has wrong species')
         return self.herbivores, self.carnivores
 
+    def simulate_one_year(self):
+        for coord in self.landscape:
+            for key in d:
+                coord[key].Eco.fodder_available()
+                d[key].Eco.carnivores_prey()
+                d[key].Eco.birth()
+        pass
 
+
+    def simulate(self, num_years, vis_years=1, img_years=None):
+        """
+        Run simulation while visualizing the result.
+
+        :param num_years: number of years to simulate
+        :param vis_years: years between visualization updates
+        :param img_years: years between visualizations saved to files (default: vis_years)
+
+        Image files will be numbered consecutively.
+        """
+        pass
 
     def set_animal_parameters(self, species, params):
         """
@@ -135,17 +162,7 @@ class BioSim:
         """
         pass
 
-    def simulate(self, num_years, vis_years=1, img_years=None):
-        """
-        Run simulation while visualizing the result.
 
-        :param num_years: number of years to simulate
-        :param vis_years: years between visualization updates
-        :param img_years: years between visualizations saved to files (default: vis_years)
-
-        Image files will be numbered consecutively.
-        """
-        pass
 
     def add_population(self, population):
         """
