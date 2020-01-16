@@ -9,11 +9,6 @@ from src.biosim.animals import Carnivores as Carn
 from src.biosim.simulation import BioSim as Bio
 
 class Ecology:
-<<<<<<< HEAD
-    def __init__(self, num_herbivores, num_carnivores, age, weight, loc):
-        self.num_herbivores = num_herbivores
-        self.num_carnivores = num_carnivores
-=======
     '''
        Class for the ecology on island, where carnivores prey, herbivores eat
        fodder, animals give birth, migrate to other cells, they age,
@@ -35,7 +30,6 @@ class Ecology:
         '''
         self.num_herbivores = len(herbivores)
         self.num_carnivores = len(carnivores)
->>>>>>> 01
         self.fodder_available = 0
         self.herbivores = [(age, weight, loc) for _ in range(num_herbivores)]
         self.carnivores = [(age, weight, loc) for _ in range(num_carnivores)]
@@ -118,20 +112,37 @@ class Ecology:
         '''
         pass
 
-<<<<<<< HEAD
     def aging_animals(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         for herb in self.herbivores:
             Ani.aging()
         for carn in self.carnivores:
             Ani.aging()
 
     def loss_of_weight_animals(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         for herb in self.herbivores:
             Ani.weight_decrease()
         for carn in self.carnivores:
             Ani.weight_decrease()
 
     def dead_animals(self):
+        '''
+
+        Returns
+        -------
+
+        '''
         living_herbivores = []
         for herb in self.herbivores:
             if Ani.calculate_fitness(self) != 0:
@@ -140,34 +151,6 @@ class Ecology:
             else:
                 living_herbivores.append(herb)
 
-=======
-    def aging(self):
-        '''
-
-        Returns
-        -------
-
-        '''
-        pass
-
-    def loss_of_weight(self):
-        '''
-
-        Returns
-        -------
-
-        '''
-        pass
-
-    def death(self):
-        '''
-
-        Returns
-        -------
-
-        '''
-        pass
->>>>>>> 01
 
 
 class Ocean(Ecology):
