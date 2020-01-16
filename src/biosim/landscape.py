@@ -5,7 +5,7 @@ __email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 
 
 
-class Landscape()
+class Landscape():
     '''
        Class for the landscape on the island
     '''
