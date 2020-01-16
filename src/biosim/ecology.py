@@ -8,24 +8,25 @@ from src.biosim.animals import Animals as Ani
 
 
 class Ecology:
-<<<<<<< Updated upstream
+    '''
+       Class for the ecology on island, where carnivores prey, herbivores eat
+       fodder, animals give birth, migrate to other cells, they age,
+       lose weight and die.
+    '''
     def __init__(self, herbivores, carnivores, age, weight, loc):  # help input
-=======
-    '''
-
-    '''
-    def __init__(self, herbivores, carnivores, age, weight, loc):  #help input
         '''
-
         Parameters
         ----------
-        herbivores
-        carnivores
-        age
-        weight
-        loc
+        herbivores:
+        carnivores:
+        age:
+        weight:
+        loc:
+
+        Returns
+        -------
+
         '''
->>>>>>> Stashed changes
         self.num_herbivores = len(herbivores)
         self.num_carnivores = len(carnivores)
         self.fodder_available = 0
@@ -36,7 +37,8 @@ class Ecology:
     def fodder_available(self):
         '''
 
-        Returns
+        Returns the amount of fodder available in the cell at the start of
+        the simulation
         -------
 
         '''
@@ -140,6 +142,12 @@ class Ecology:
 
 class Ocean(Ecology):
     '''
+    Sub class for the geography type Ocean
+
+    Parameters
+    ----------
+    'f_max': 0
+    'possible_to_enter': False
 
     '''
     ocean_params = {'f_max': 0,
@@ -165,8 +173,14 @@ class Ocean(Ecology):
 
 class Jungle(Ecology):
     '''
+       Sub class for the geography type Jungle
 
-    '''
+       Parameters
+       ----------
+       'f_max': 800
+       'possible_to_enter': True
+
+       '''
     jungle_params = {'f_max': 800,
                      'possible_to_enter': True}
 
@@ -199,6 +213,13 @@ class Jungle(Ecology):
 
 class Savannah(Ecology):
     '''
+    Sub class for the geography type Savannah
+
+    Parameters
+    ----------
+    'f_max': 300,
+    'alpha': 0.3,
+    'possible_to_enter': True
 
     '''
     savannah_params = {'f_max': 300,
@@ -235,6 +256,13 @@ class Savannah(Ecology):
 
 class Desert(Ecology):
     '''
+    Sub Class for the geography type Desert
+
+    Parameters
+    ----------
+    'f_max': 300,
+    'alpha': 0.3,
+    'possible_to_enter': True
 
     '''
     desert_params = {'f_max': 0,
@@ -260,6 +288,12 @@ class Desert(Ecology):
 
 class Mountain(Ecology):
     '''
+    Class for the geography type Mountain
+
+    Parameters
+    ----------
+    'f_max': 0
+    'possible_to_enter': False
 
     '''
     mountain_params = {'f_max': 0,

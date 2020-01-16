@@ -9,10 +9,10 @@ import math
 
 class Animals():
     '''
-    Class for all animals on island
+       The over all class for all animals on island. Herbivores and Carnivores
     '''
     def __init___(self, age=0, weight=None, loc=None):
-        ''' creates animal with age 0
+        '''
 
         Parameters
         ----------
@@ -67,7 +67,7 @@ class Animals():
         Parameters
         ----------
         failed_prey are the number of herbivores that survives the attack
-        from carnivores when the carnivore faills to kill
+        from carnivores when the carnivore fails to kill
 
         Returns the list of herbivores eaten
         -------
@@ -99,12 +99,7 @@ class Animals():
     def weight_increase(self, fodder_eaten):
         '''
 
-        Parameters
-        ----------
-        fodder_eaten is the fodder which is eaten by the animal
-
-        Increases the animal weight due to x amount of fodder eaten * the
-        parameter 'beta'
+        Decreases the animal weight annually based on the parameter 'beta'
         -------
 
         '''
@@ -122,7 +117,8 @@ class Animals():
         # self.calculate_fitness()
 
     def calculate_fitness(self):
-        ''' The calculated fitness level of animal which is based
+        '''
+        The calculated fitness level of animal which is based
         on age and weight of the animal.
 
         Returns a float of the calculated fitness level.
@@ -140,8 +136,6 @@ class Animals():
 
 <<<<<<< Updated upstream
     def will_migrate(self):
-=======
-    def migration(self):
         '''
 
         Returns boolean if the animal migrate, depending on their
@@ -149,7 +143,6 @@ class Animals():
         -------
 
         '''
->>>>>>> Stashed changes
         probability = self.mu * self.fitness
         if random.uniform(0, 1) < probability:
             return True
@@ -199,10 +192,9 @@ class Animals():
 
 
 class Herbivores(Animals):
-        '''
-        Class parameters represented in a dictionary.
-        '''
-
+    '''
+    Class parameters represented in a dictionary.
+    '''
     herbivore_params = {'w_birth': 8,
                         'sigma_birth': 1.5,
                         'beta': 0.9,
@@ -250,10 +242,11 @@ class Herbivores(Animals):
 
 
 class Carnivores(Animals):
-        '''
-        Class parameters represented in a dictionary.
+    '''
+    Class parameters represented in a dictionary.
 
-        '''
+    '''
+
     carnivore_params = {'w_birth': 6,
                         'sigma_birth': 1,
                         'beta': 0.75,

@@ -6,6 +6,9 @@ __email__ = "elinor2511@gmail.com, lisast@nmbu.no"
 
 
 class Landscape():
+    '''
+       Class for the landscape on the island
+    '''
     def __init__ (self, geostring, poplist):
         self.geostring = geostring
         self.landscape = []
@@ -21,9 +24,9 @@ class Landscape():
 
     def create_landscape(self):
         '''
-        This function creates the landscape of the island.
+        this function creates landscape where the animals live
 
-        Returns a dictionary where keys are coordinates and blablabla
+        Returns
         -------
 
         '''
